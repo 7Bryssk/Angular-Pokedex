@@ -5,11 +5,17 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './views/list/list.component';
+import { ListItemComponent } from './components/list-item/list-item.component';
+import { RollOnScrollDirective } from './directives/rolarPokeball/roll-on-scroll.directive';
+import { FormatarNumeroPipe } from './pipes/formatacao/formatar-numero.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent
+    ListComponent,
+    ListItemComponent,
+    RollOnScrollDirective,
+    FormatarNumeroPipe
   ],
   imports: [
     BrowserModule,
