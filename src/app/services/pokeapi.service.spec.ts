@@ -1,12 +1,15 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 
 import { PokeapiService } from './pokeapi.service';
 
 describe('PokeapiService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
-
-  it('should be created', () => {
-    const service: PokeapiService = TestBed.get(PokeapiService);
-    expect(service).toBeTruthy();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [PokeapiService]
+    });
   });
+
+  it('should be created', inject([PokeapiService], (service: PokeapiService) => {
+    expect(service).toBeTruthy();
+  }));
 });

@@ -5,7 +5,7 @@ import { Directive, ElementRef, Renderer2, HostListener } from '@angular/core';
 })
 export class RollOnScrollDirective {
 
-  @HostListener('window:scroll', []) onWindowScroll() {
+  @HostListener('window:scroll', []) onWindowScroll(){
     const rotation = `translateY(-50%) rotateZ(${window.scrollY / 15}deg)`;
 
     this.renderer.setStyle(

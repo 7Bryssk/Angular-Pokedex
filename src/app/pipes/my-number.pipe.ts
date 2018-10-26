@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'formatarNumero'
+  name: 'myNumber'
 })
-export class FormatarNumeroPipe implements PipeTransform {
+export class MyNumberPipe implements PipeTransform {
 
   transform(value: number): string {
     return ('000' + value).slice(-3);
