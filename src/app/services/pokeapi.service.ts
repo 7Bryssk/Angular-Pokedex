@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-interface PokeListResponse{
+import { Observable } from 'rxjs';
+
+interface PokeListResponse {
   created: string,
   modified: string,
   name: string,
@@ -20,7 +22,7 @@ export class PokeapiService {
     private http: HttpClient
   ) { }
 
-  listAll(){
+  listAll() {
     this.http.get<PokeListResponse>(`${this.url}/pokedex/1`)
       .subscribe(
         response => {
@@ -29,16 +31,20 @@ export class PokeapiService {
           })
           this.pokeList = this.sortPokemon(response.pokemon)
             .filter(pokemon => pokemon.number < 1000)
-            .slice(0,9);
+            .slice(0, 9);
         }
       )
   }
 
-  private getNumberFromUrl(url){
+  getPokemon(number: number): Observable<any> {
+    return this.http.get(`${this.url}/pokemon/${number}`)
+  }
+
+  private getNumberFromUrl(url) {
     return parseInt(url.replace(/.*\/(\d+)\/$/, '$1'));
   }
 
-  private sortPokemon(pokemonList){
+  private sortPokemon(pokemonList) {
     return pokemonList.sort((a, b) => {
       return (a.number > b.number ? 1 : -1);
     })
